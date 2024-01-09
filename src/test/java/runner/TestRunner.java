@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
 				glue = {"stepdefs","AppHooks"},						// Stepdef file location
 				plugin = {"pretty", "html:C:/Users/GiridharLohiya/Cucumber_TestNG/target/cucumber-reports"}, // Cucumber report file location
 				monochrome = true,							// Output/Report should be in Nice & allign format
-				publish = true								// Publish reports On Cloud
+				publish = false								// Publish reports On Cloud
 				)
 
 public class TestRunner extends AbstractTestNGCucumberTests{
