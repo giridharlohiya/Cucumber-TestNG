@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite configfailurepolicy="continue" thread-count="1" parallel="classes" name="Failed suite [Cucumber_TestNG]" guice-stage="DEVELOPMENT" verbose="2">
+  <test thread-count="1" parallel="classes" name="Skeloton FW Test(failed)" verbose="2">
+    <classes>
+      <class name="runner.TestRunner">
+        <methods>
+          <include name="runScenario" invocation-numbers="0"/>
+          <include name="tearDownClass"/>
+          <include name="setUpClass"/>
+        </methods>
+      </class> <!-- runner.TestRunner -->
+    </classes>
+  </test> <!-- Skeloton FW Test(failed) -->
+</suite> <!-- Failed suite [Cucumber_TestNG] -->

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-01-08T01:20:18 IST" name="Cucumber TestNG Test New Suite" finished-at="2024-01-08T01:20:18 IST" duration-ms="668">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@59662a0b]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2024-01-08T01:20:18 IST" name="Skeloton FW Test" finished-at="2024-01-08T01:20:18 IST" duration-ms="668">
+      <class name="runner.TestRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@59662a0b]" started-at="2024-01-08T01:20:18 IST" name="setUpClass" finished-at="2024-01-08T01:20:18 IST" duration-ms="487" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@50caa560]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@59662a0b]" started-at="2024-01-08T01:20:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-01-08T01:20:18 IST" duration-ms="101" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Login Cases"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Login Cases With TestNG"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "this.driver" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "this.driver" is null
+at Pages.LoginPage.Enter_URL(LoginPage.java:25)
+at stepdefs.LoginStepDef.User_Is_On_The_Login_Page(LoginStepDef.java:14)
+at ✽.User Is On The Login Page(file:///C:/Users/GiridharLohiya/Cucumber_TestNG/src/test/resources/features/Login.feature:5)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@59662a0b]" started-at="2024-01-08T01:20:18 IST" name="tearDownClass" finished-at="2024-01-08T01:20:18 IST" duration-ms="37" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- runner.TestRunner -->
+    </test> <!-- Skeloton FW Test -->
+  </suite> <!-- Cucumber TestNG Test New Suite -->
+</testng-results>
