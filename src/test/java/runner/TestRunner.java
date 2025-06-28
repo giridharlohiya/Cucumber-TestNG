@@ -7,7 +7,11 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features = "src/test/resources/features", // Feature file location
 				glue = {"stepdefs","AppHooks"},						// Stepdef file location
-				plugin = {"pretty", "html:C:/Users/GiridharLohiya/Cucumber_TestNG/target/cucumber-reports"}, // Cucumber report file location
+				plugin = {
+						"pretty",
+						"html:target/cucumber-reports/html-report.html",
+						"json:target/cucumber-reports/report.json"
+						}, // Cucumber report file location
 				monochrome = true,							// Output/Report should be in Nice & allign format
 				publish = false								// Publish reports On Cloud
 				)

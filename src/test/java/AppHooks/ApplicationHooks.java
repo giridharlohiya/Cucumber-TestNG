@@ -36,7 +36,7 @@ public class ApplicationHooks {
 
 	@After(order = 0)
 	public void quitBrowser() {
-		driver.quit();
+		DriverFactory.quitDriver(); // use thread-safe quit method
 	}
 
 	@After(order = 1)
@@ -44,7 +44,7 @@ public class ApplicationHooks {
 		if (scenario.isFailed()) {
 			// take screenshot:
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
-			byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+			byte[] sourcePath = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
 			scenario.attach(sourcePath, "image/png", screenshotName);
 
 		}

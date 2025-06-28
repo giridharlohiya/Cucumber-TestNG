@@ -16,127 +16,74 @@
   </properties>
 
   <dependencies>
-    <!-- Selenium -->
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-      <version>3.141.59</version>
-    </dependency>
+  <!-- Cucumber -->
+  <dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-java</artifactId>
+    <version>6.11.0</version>
+  </dependency>
+  <dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-testng</artifactId>
+    <version>6.11.0</version>
+  </dependency>
 
-    <!-- Cucumber 1.x (older) -->
-    <dependency>
-      <groupId>info.cukes</groupId>
-      <artifactId>cucumber-java</artifactId>
-      <version>1.2.5</version>
-    </dependency>
+  <!-- Selenium -->
+  <dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>3.141.59</version>
+  </dependency>
 
-    <dependency>
-      <groupId>info.cukes</groupId>
-      <artifactId>cucumber-jvm-deps</artifactId>
-      <version>1.0.5</version>
-      <scope>test</scope>
-    </dependency>
+  <!-- TestNG -->
+  <dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>6.14.3</version>
+    <scope>test</scope>
+  </dependency>
 
-    <dependency>
-      <groupId>info.cukes</groupId>
-      <artifactId>cucumber-testng</artifactId>
-      <version>1.2.5</version>
-    </dependency>
+  <!-- Reporting -->
+  <dependency>
+    <groupId>net.masterthought</groupId>
+    <artifactId>cucumber-reporting</artifactId>
+    <version>3.15.0</version>
+  </dependency>
+  <dependency>
+    <groupId>tech.grasshopper</groupId>
+    <artifactId>extentreports-cucumber6-adapter</artifactId>
+    <version>2.8.0</version>
+    <scope>test</scope>
+  </dependency>
 
-    <!-- Cucumber 7.x -->
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-java</artifactId>
-      <version>7.1.0</version>
-      <scope>test</scope>
-    </dependency>
+  <!-- WebDriverManager -->
+  <dependency>
+    <groupId>io.github.bonigarcia</groupId>
+    <artifactId>webdrivermanager</artifactId>
+    <version>5.6.3</version>
+  </dependency>
 
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-junit</artifactId>
-      <version>7.1.0</version>
-    </dependency>
+  <!-- Allure Cucumber JVM -->
+  <dependency>
+  <groupId>io.qameta.allure</groupId>
+  <artifactId>allure-cucumber6-jvm</artifactId>
+  <version>2.20.1</version>
+  </dependency>
+  
+  <!-- Apache POI (if you're using Excel) -->
+  <dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi-ooxml</artifactId>
+    <version>4.1.2</version>
+  </dependency>
 
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-testng</artifactId>
-      <version>7.4.0</version>
-      <scope>test</scope>
-    </dependency>
-
-    <!-- Cucumber Reporting -->
-    <dependency>
-      <groupId>net.masterthought</groupId>
-      <artifactId>cucumber-reporting</artifactId>
-      <version>3.8.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>tech.grasshopper</groupId>
-      <artifactId>extentreports-cucumber6-adapter</artifactId>
-      <version>2.8.0</version>
-      <scope>test</scope>
-    </dependency>
-
-    <!-- TestNG -->
-    <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <version>6.14.3</version>
-      <scope>test</scope>
-    </dependency>
-
-    <!-- Apache POI -->
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi</artifactId>
-      <version>4.1.2</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi-ooxml</artifactId>
-      <version>4.1.2</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi-ooxml-schemas</artifactId>
-      <version>3.9</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi-scratchpad</artifactId>
-      <version>3.9</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>ooxml-schemas</artifactId>
-      <version>1.1</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>openxml4j</artifactId>
-      <version>1.0-beta</version>
-    </dependency>
-
-    <!-- WebDriverManager -->
-    <dependency>
-      <groupId>io.github.bonigarcia</groupId>
-      <artifactId>webdrivermanager</artifactId>
-      <version>5.6.3</version>
-    </dependency>
-
-    <!-- Lombok -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.18.30</version>
-      <scope>provided</scope>
-    </dependency>
+  <!-- Lombok (if used in your codebase) -->
+  <dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.30</version>
+    <scope>provided</scope>
+  </dependency>
   </dependencies>
 
   <build>
@@ -188,7 +135,7 @@
               <projectName>Cucumber_TestNG</projectName>
               <outputDirectory>target/cucumber-reports/advanced-reports</outputDirectory>
               <jsonFiles>
-                <param>target/cucumber-reports/CucumberTestReport.json</param>
+              <param>target/cucumber-reports/*.json</param>
               </jsonFiles>
               <buildNumber>1</buildNumber>
               <parallelTesting>false</parallelTesting>

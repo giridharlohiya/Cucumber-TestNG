@@ -1,5 +1,7 @@
 package stepdefs;
 
+import org.testng.Assert;
+
 import Factory.DriverFactory;
 import Pages.LoginPage;
 import io.cucumber.java.en.*;
@@ -14,13 +16,13 @@ public class LoginStepDef{
 		loginpage.Enter_URL();
 	}
 	
-	@When("User Enter Email Password")
-	public void User_Enter_Email_Password() {
-		loginpage.User_Login();
+	@When("User enters valid email and password")
+	public void user_enters_valid_email_and_password() {
+		loginpage.loginWithValidCredentials();
 	}
 
-	@Then("User Should verify Home Page")
-	public void User_Should_verify_Home_Page() {
-		System.out.println("Logged Out");
-	}
+	@Then("User should be navigated to the home page")
+	public void user_should_verify_home_page() {
+    Assert.assertTrue(loginpage.isHomePageDisplayed(), "Home page not displayed!");
+}
 }
