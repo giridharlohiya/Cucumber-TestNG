@@ -1,5 +1,5 @@
-**Compatible versions:**
---Dependencies--
+Dependencies versions:
+
 Cucumber 7.4.0
 Selenium 3.141.59
 TestNG 6.14.3
