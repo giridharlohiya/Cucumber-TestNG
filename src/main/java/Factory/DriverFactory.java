@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import java.util.concurrent.TimeUnit;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -33,9 +34,12 @@ public class DriverFactory {
 		}
 		getDriver().manage().deleteAllCookies();
         getDriver().manage().window().maximize();
-    
+        
+        getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
+
         return getDriver();
 	}
+
     public static WebDriver getDriver() {
         return tlDriver.get();
     }
