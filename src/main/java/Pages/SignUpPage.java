@@ -56,7 +56,6 @@ public class SignUpPage
         utility.sendKeys(email_Id, emailId);
         utility.sendKeys(pwd_Id, pwd);
         utility.sendKeys(cpwd_Id, cpwd);
-        
     }    
 
     public boolean AccCreatedSuccessMsg() {
