@@ -2,6 +2,7 @@ package Factory;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import java.util.concurrent.TimeUnit;
@@ -14,31 +15,35 @@ public class DriverFactory {
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 	
 	public WebDriver init_driver(String browser) {
-		System.out.println("browser value is: " + browser);
-		if (tlDriver.get() == null) {
-            switch (browser.toLowerCase()) {
-                case "chrome":
-                    WebDriverManager.chromedriver().setup();
-                    tlDriver.set(new ChromeDriver());
-                    break;
-                case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
-                    tlDriver.set(new FirefoxDriver());
-                    break;
-                case "safari":
-                    tlDriver.set(new SafariDriver());
-                    break;
-                default:
-                    throw new IllegalArgumentException("Invalid browser name: " + browser);
-            }	
-		}
-		getDriver().manage().deleteAllCookies();
-        getDriver().manage().window().maximize();
-        
-        getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
+    System.out.println("browser value is: " + browser);
+    if (tlDriver.get() == null) {
+        switch (browser.toLowerCase()) {
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--disable-popup-blocking");
+                options.addArguments("--disable-notifications");
+                options.addArguments("--blink-settings=imagesEnabled=false"); // optional
+                tlDriver.set(new ChromeDriver(options));
+                break;
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                tlDriver.set(new FirefoxDriver());
+                break;
+            case "safari":
+                tlDriver.set(new SafariDriver());
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid browser name: " + browser);
+        }
+    }
+    getDriver().manage().deleteAllCookies();
+    getDriver().manage().window().maximize();
+    getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-        return getDriver();
-	}
+    return getDriver();
+}
+
 
     public static WebDriver getDriver() {
         return tlDriver.get();
