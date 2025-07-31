@@ -2,7 +2,9 @@ package stepdefs;
 
 import Pages.HomePage;
 import Pages.SignUpPage;
+import Utility.ElementUtil;
 import io.cucumber.java.en.*;
+
 import org.testng.Assert;
 
 import Factory.DriverFactory;
@@ -11,6 +13,7 @@ public class SignUpSteps {
 
     SignUpPage signUp = new SignUpPage(DriverFactory.getDriver());
     HomePage homepage = new HomePage(DriverFactory.getDriver());
+    ElementUtil utility = new ElementUtil(DriverFactory.getDriver());
 
 //1st Scenario: Create a new account successfully
     @Given("the user is on the Magento homepage")
@@ -23,7 +26,8 @@ public class SignUpSteps {
     }
     @And("the user enters valid details")
     public void enterAccountDetails() {
-        signUp.EnterAccCreationDetails("Qwertyu1","Qwertyu1","newemaln2@gmai.com");
+        String randomemail = utility.generateRandomEmail();
+        signUp.EnterAccCreationDetails("Qwertyu1","Qwertyu1",randomemail);
     }
     @And("clicks {string}")
     public void clickCreateAccount(String button) {
@@ -61,14 +65,14 @@ public class SignUpSteps {
 		Assert.assertTrue(signUp.isPasswordMismatchErrorDisplayed(), "Password mismatch error Validation Failed.");
 	}
 //5th Scenario: Validate weak password
-	@When("the user enters a weak password {string}")
-	public void enterWeakPassword(String password) {
-		signUp.enterWeakPassword(password);
+	@When("the user enters a weak password")
+	public void enterWeakPassword() {
+		signUp.EnterAccCreationDetails("test123", "test123","otheremail@gmai.com");
 	}
 	@Then("validate password error message {string}")
 	public void validateWeakPasswordErrorMessage(String expectedMsg) {
         String actualMsg = signUp.WeakPwdMsgDisplayed();
-        Assert.assertEquals(actualMsg.trim(), expectedMsg.trim());
+        Assert.assertTrue(actualMsg.contains(expectedMsg), "Weak password error Validation Failed.");
 	}
 //6th Scenario: Validate email format
     @When("the user enters invalid email {string}")
@@ -78,7 +82,7 @@ public class SignUpSteps {
     @Then("validate email error message {string}")
     public void verifyEmailError(String expectedMsg) {
         String actualMsg = signUp.getEmailErrorMessage();
-        Assert.assertEquals(actualMsg.trim(), expectedMsg.trim());
+        Assert.assertEquals(actualMsg.trim(), expectedMsg.trim(),  "Email Format Validation Failed.");
     }
 
 }

@@ -23,25 +23,27 @@ public class LoginStepDef{
 	
 	@When("User enters valid email and password")
 	public void user_enters_valid_email_and_password() {
-		Assert.assertTrue(loginpage.loginWithValidCredentials(), "Login failed!");
-		System.out.println("Login successful with valid credentials");
+		loginpage.loginWithCredentials("newemaln2@gmai.com","Qwertyu1");
 	}
 	@Then("User should be navigated to the home page")
 	public void user_should_verify_home_page() {
-		Assert.assertTrue(loginpage.isHomePageDisplayed(), "Home page not displayed!");
-		System.out.println("Home page displayed successfully");
+		Assert.assertTrue(loginpage.isHomePageDisplayed(), "Valid Credentials Login Failed!");
+		System.out.println("Valid Credentials Login successfull");
 	}
 
 	@When("User enters Invalid email and Valid password")
-	public void User_enters_Invalid_email_and_Valid_password() {
-		Assert.assertTrue(loginpage.loginWithInValidEmail(), "Invalid email failed!");
-		System.out.println("Invalid email Validated successfully");
+	public void User_Login_With_Invalid_Email() {
+		loginpage.loginWithCredentials("nedfdfdfaln2@gmai.com","Qwertyu1");	
 	}	
+	@Then("User validates Invalid error message")
+	public void validates_Invalid_email_error_message() {
+		Assert.assertTrue(loginpage.LoginErrMsgDisplayed(), "Invalid Email/Pwd Validation Failed!");
+		System.out.println("Invalid Email/Pwd Validation successfull");
+	}
 
 	@When("User enters Valid email and Invalid password")
-	public void User_enters_valid_email_and_Invalid_password() {
-		Assert.assertTrue(loginpage.loginWithInValidPassword(), "Invalid email failed!");
-		System.out.println("Invalid email Validated successfully");
+	public void User_Login_With_Invalid_password() {
+		loginpage.loginWithCredentials("newemaln2@gmai.com","abc");	
 	}	
 
 	@Then("all fields should show validation error In LoginPage")
@@ -54,8 +56,8 @@ public class LoginStepDef{
         loginpage.enteremailIdInForgotPwd(email);
     }
 
-	@Then("validate success message")
-    public void VaidateSuccessMsg() {
+	@Then("validate forgot password success message")
+    public void VaidateForgotPwdSuccessMsg() {
         Assert.assertTrue(loginpage.VaidateForgotPwdSuccessMsg());
     }
 }

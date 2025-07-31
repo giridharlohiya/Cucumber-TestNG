@@ -1,21 +1,24 @@
 package Pages;
 
+import java.util.Properties;
+
 import org.openqa.selenium.WebDriver;
+
+import Utility.ConfigReader;
 
 
 public class HomePage 
 {
- 	private WebDriver driver;
-    // Constructor
+    WebDriver driver;
+    Properties prop;
+
     public HomePage(WebDriver driver) {
         this.driver = driver;
-
+        this.prop = new ConfigReader().init_prop(); 
     }	
-//Locators
-//Methods
 
     public void navigateToHomePage() {
-        driver.get("https://magento.softwaretestingboard.com/");
+        driver.get(prop.getProperty("magentourl"));
       }
     
 }

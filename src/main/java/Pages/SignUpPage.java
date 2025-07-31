@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import Factory.DriverFactory;
 import Utility.ElementUtil;
 
 public class SignUpPage 
@@ -33,8 +32,12 @@ public class SignUpPage
     private By TyMsg = By.xpath("//*[contains(text(),'Thank you for registering with Main Website Store.')]");
     private By ExistingErrMsg_xp = By.xpath("//*[contains(text(),'There is already an account with this email address.')]");
     private By PwdAndCPwdMsgError_xp = By.xpath("//*[contains(text(),'Please enter the same value again.')]");
-    private By weakPwdMsg = By.xpath("//*[contains(text(),'Please enter a stronger password.')]");
+    private By weakPwdMsg = By.id("password-error");
     private By emailErrorMsg_id = By.id("email_address-error");
+
+    private By AddPopUp_xp = By.xpath("//*[@id='card']//*[text()='Ad'])");
+    private By AddCloseBtn_xp = By.xpath("//*[@class='toprow']//*[@aria-label='Close ad']");
+
 //Methods
 
     
@@ -50,6 +53,9 @@ public class SignUpPage
     }
 
     public void EnterAccCreationDetails(String pwd, String cpwd,String emailId) {
+        if(utility.isDisplayed(AddPopUp_xp)) {
+            utility.click(AddCloseBtn_xp);
+        }
         String randomName = utility.generateRandomString(5);
         utility.sendKeys(fname_ID, randomName);
         utility.sendKeys(lname_ID, randomName);

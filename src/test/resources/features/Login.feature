@@ -11,11 +11,13 @@ Feature: Login Page Cases
     Given the user is on the Magento homepage
     And the user clicks 'Sign In Link' On Home Page
     When User enters Invalid email and Valid password
+    Then User validates Invalid error message
 
   Scenario: Login With InValidate password
     Given the user is on the Magento homepage
     And the user clicks 'Sign In Link' On Home Page
     When User enters Valid email and Invalid password
+    Then User validates Invalid error message
 
   Scenario: Login With with blank fields
     Given the user is on the Magento homepage
@@ -29,4 +31,4 @@ Feature: Login Page Cases
     And the user clicks 'Forgot Your Password?' On Home Page
     And the user enter emailId "newemaln2@gmai.com"
     And the user clicks 'Reset My Password' On Home Page
-    Then validate success message 
+    Then validate forgot password success message 

@@ -30,7 +30,7 @@ Feature: Sign Up
 Scenario: Validate weak password
   Given the user is on the Magento homepage
   When the user clicks "Create an Account"
-  And the user enters a weak password "test123"
+  And the user enters a weak password
   And clicks "Create Account"
   Then validate password error message "Minimum length of this field must be equal or greater than 8 symbols."
 

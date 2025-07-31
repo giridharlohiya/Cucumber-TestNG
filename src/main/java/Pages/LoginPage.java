@@ -25,9 +25,10 @@ public class LoginPage
     By Password_ID = By.id("pass");
     By HomePageLabel_cl = By.className("base");
     By LoginErrMsg = By.xpath("//*[contains(text(),'The account sign-in was incorrect or your account is disabled temporarily')]");
-    By ForgotYourPwdLink_cl = By.className("//*[contains(text(),'Forgot Your Password?')]");
-    By ResetPwdBBtn_cl = By.className("action submit primary");
+    By ForgotYourPwdLink_cl = By.linkText("Forgot Your Password?");
+    By ResetPwdBBtn_cl = By.xpath("//*[text()='Reset My Password']");
     By ForgotPwdSuccessMsg = By.xpath("//*[contains(text(),'If there is an account associated with')]");
+    By EmailInForgotPwd_ID = By.id("email_address");
 
     
 //Methods
@@ -46,32 +47,19 @@ public class LoginPage
                 utility.click(ResetPwdBBtn_cl);
                 break; 
         }
-    }
-    
-   	public void Login(String email, String password) {
-        utility.sendKeys(Email_ID, email);
-        utility.sendKeys(Password_ID, password);
     }    
 
-	public boolean loginWithValidCredentials() {
-        Login("newemaln2@gmai.com","Qwertyu1");
+	public void loginWithCredentials(String email, String password) {
+        utility.sendKeys(Email_ID, email);
+        utility.sendKeys(Password_ID, password);
         utility.click(SignInBtn_ID);
-        return isHomePageDisplayed();
     }
 
     public boolean isHomePageDisplayed() {
         return utility.isDisplayed(HomePageLabel_cl);
     }
 
-    public boolean loginWithInValidEmail() {
-        Login("nedfdfdfaln2@gmai.com","Qwertyu1");
-        utility.click(SignInBtn_ID);
-        return utility.isDisplayed(LoginErrMsg);
-
-    }
-     public boolean loginWithInValidPassword() {
-        Login("newemaln2@gmai.com","abc");
-        utility.click(SignInBtn_ID);
+    public boolean LoginErrMsgDisplayed() {
         return utility.isDisplayed(LoginErrMsg);
     }
 
@@ -87,7 +75,7 @@ public class LoginPage
     }
 
     public void enteremailIdInForgotPwd(String email) {
-        utility.sendKeys(Email_ID, email);
+        utility.sendKeys(EmailInForgotPwd_ID, email);
     }
 
     public boolean VaidateForgotPwdSuccessMsg() {
