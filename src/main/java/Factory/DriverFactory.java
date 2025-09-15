@@ -33,8 +33,10 @@ public class DriverFactory {
                     String userDataDir = "/tmp/chrome-profile-" + UUID.randomUUID();
                     options.addArguments("--user-data-dir=" + userDataDir);
 
-                    // Optional: enable this if running on CI/CD without display
-                    options.addArguments("--headless=new");
+                    // Optional: enable headless only in CI/CD
+                    if (System.getenv("CI") != null) {
+                        options.addArguments("--headless=new");
+}
 
                     tlDriver.set(new ChromeDriver(options));
                     break;

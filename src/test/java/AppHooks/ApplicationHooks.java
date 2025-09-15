@@ -1,7 +1,5 @@
 package AppHooks;
 
-import java.util.Properties;
-
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -17,10 +15,9 @@ public class ApplicationHooks {
 	
 	private DriverFactory driverFactory;
 	private WebDriver driver;
-	Properties prop;
 
 	@Before(order = 0)
-	public void getProperty() {
+	public void loadConfig() {
 		ConfigReader.init_prop();
 	}
 
@@ -32,17 +29,16 @@ public class ApplicationHooks {
 
 	@After(order = 0)
 	public void quitBrowser() {
-		DriverFactory.quitDriver(); // use thread-safe quit method
+		DriverFactory.quitDriver(); // thread-safe quit
 	}
 
 	@After(order = 1)
 	public void tearDown(Scenario scenario) {
 		if (scenario.isFailed()) {
-			// take screenshot:
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
-			byte[] sourcePath = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
+			byte[] sourcePath = ((TakesScreenshot) DriverFactory.getDriver())
+					.getScreenshotAs(OutputType.BYTES);
 			scenario.attach(sourcePath, "image/png", screenshotName);
-
 		}
 	}
 }

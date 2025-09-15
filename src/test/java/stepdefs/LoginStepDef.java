@@ -8,7 +8,6 @@ import Factory.DriverFactory;
 import Pages.HomePage;
 import Pages.LoginPage;
 import io.cucumber.java.en.*;
-import Utility.ApiUtils;
 import io.restassured.response.Response;
 
 public class LoginStepDef{
