@@ -1,11 +1,15 @@
 package stepdefs;
 
+import java.util.List;
+
 import org.testng.Assert;
 
 import Factory.DriverFactory;
 import Pages.HomePage;
 import Pages.LoginPage;
 import io.cucumber.java.en.*;
+import Utility.ApiUtils;
+import io.restassured.response.Response;
 
 public class LoginStepDef{
 	
@@ -60,5 +64,14 @@ public class LoginStepDef{
     public void VaidateForgotPwdSuccessMsg() {
         Assert.assertTrue(loginpage.VaidateForgotPwdSuccessMsg());
     }
+
+	@When("User calls Get User API")
+    public void GetUsersAPI() {
+		Response res = loginpage.GetUsersAPI();
+		Assert.assertEquals(res.getStatusCode(), 200, "Expected status code 200");
+		
+		List<String> fnames = res.jsonPath().getList("data.first_name");
+		Assert.assertTrue(fnames.contains("George"));
+	}
 }
 

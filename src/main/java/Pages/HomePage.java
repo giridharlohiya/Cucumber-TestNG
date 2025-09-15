@@ -14,7 +14,6 @@ public class HomePage
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
-        this.prop = new ConfigReader().init_prop(); 
     }	
 
     public void navigateToHomePage() {

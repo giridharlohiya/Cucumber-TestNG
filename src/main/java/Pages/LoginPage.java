@@ -6,17 +6,20 @@ import java.util.stream.Collectors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import Utility.ApiUtils;
 import Utility.ElementUtil;
+import io.restassured.response.Response;
 
 public class LoginPage 
 {
     private ElementUtil utility;
  	private WebDriver driver;
+    ApiUtils ApiUtils = new ApiUtils();
+
     // Constructor
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         this.utility = new ElementUtil(driver);
-
     }	
 //Locators
     By SignInLink_Link = By.linkText("Sign In");
@@ -81,4 +84,9 @@ public class LoginPage
     public boolean VaidateForgotPwdSuccessMsg() {
         return utility.isDisplayed(ForgotPwdSuccessMsg);
     }
+
+    public Response GetUsersAPI() {
+       return Utility.ApiUtils.sendRequest("GET", "/users?page=1");
+    }
+    
 }

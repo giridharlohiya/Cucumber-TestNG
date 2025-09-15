@@ -6,14 +6,14 @@ import java.util.Properties;
 
 public class ConfigReader {
 
-    private Properties prop;
+    private static Properties prop;
 
     /**
      * Loads properties from the config.properties file
      * 
      * @return Properties object
      */
-    public Properties init_prop() {
+    public static void init_prop() {
         prop = new Properties();
         String path = "./src/test/resources/config/config.properties";
         
@@ -23,7 +23,12 @@ public class ConfigReader {
             System.out.println("Failed to load config.properties from: " + path);
             e.printStackTrace();
         }
-        
-        return prop;
+    }
+
+    public static String get(String key) {
+        if (prop == null) {
+            init_prop();
+        }
+        return prop.getProperty(key);
     }
 }

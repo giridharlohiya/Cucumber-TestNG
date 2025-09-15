@@ -32,3 +32,6 @@ Feature: Login Page Cases
     And the user enter emailId "newemaln2@gmai.com"
     And the user clicks 'Reset My Password' On Home Page
     Then validate forgot password success message 
+
+Scenario: Validate Get User API
+    Given User calls Get User API
