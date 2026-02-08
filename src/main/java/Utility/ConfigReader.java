@@ -13,7 +13,7 @@ public class ConfigReader {
      * 
      * @return Properties object
      */
-    public static void init_prop() {
+    public static void Load_prop() {
         prop = new Properties();
         String path = "./src/test/resources/config/config.properties";
         
@@ -27,7 +27,7 @@ public class ConfigReader {
 
     public static String get(String key) {
         if (prop == null) {
-            init_prop();
+            Load_prop();
         }
         return prop.getProperty(key);
     }

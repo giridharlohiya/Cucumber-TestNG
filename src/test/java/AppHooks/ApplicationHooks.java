@@ -18,7 +18,7 @@ public class ApplicationHooks {
 
 	@Before(order = 0)
 	public void loadConfig() {
-		ConfigReader.init_prop();
+		ConfigReader.Load_prop();
 	}
 
 	@Before(order = 1)
